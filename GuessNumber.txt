@@ -1,0 +1,52 @@
+
+//Guess the number game
+
+import java.util.*;
+import java.util.Random;
+
+
+
+public class GuessTheNumber {
+    public static void main(String[] args) {
+        //Taking inputs
+        Scanner sc=new Scanner(System.in);
+
+        //Entering the user name
+        System.out.println("What is your name ? ");
+        String name=sc.nextLine();
+
+        System.out.println("Well,"+name+" I am thinking the number between 1 to 100 !");
+
+        //myNumber is between 1 and 100
+        //calling the method getRandomNumber
+
+        int myNumber=getRandomNumber(1,101);
+
+            for(int i=0;i<6;i++){
+
+                System.out.println("Take a guess.....");
+                int userNumber=sc.nextInt();
+
+                if(userNumber==myNumber){
+                    System.out.println("Congratulations ! You have guessed the corrct number");
+                }
+                else if(userNumber>myNumber){
+                    System.out.println("your guessed number is too high...");
+                }
+                else if(userNumber<myNumber){
+                    System.out.println("your guessed number is too low...");
+                }
+
+                if(i>=5){
+                    System.out.println("Opps ! You failed \nI was thinking about the number "+myNumber);
+                }
+            }
+
+    }
+
+    //creating a method for selecting random number
+    public static int getRandomNumber(int min,int max){
+        Random random=new Random();
+        return random.ints(min,max).findFirst().getAsInt();
+    }
+}
